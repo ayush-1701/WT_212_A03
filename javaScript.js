@@ -2,12 +2,16 @@ let url = "https://davids-restaurant.herokuapp.com/menu_items.json"
 
 let menu_items = null;
 
-$("document").ready(function(){
-    $.get(url,function(data, status){
-        if (status == "success"){
+$("document").ready(function()
+{
+    $.get(url,function(data, status)
+    {
+        if (status == "success")
+        {
             menu_items = data.menu_items;
             console.log(menu_items.length);
-            for (const key in data.menu_items) {
+            for (const key in data.menu_items) 
+            {
                 let opt = document.createElement("option");
                 opt.textContent = data.menu_items[key].name;
                 opt.value = key; 
@@ -19,7 +23,8 @@ $("document").ready(function(){
        
     });
 
-    function showoptions(){
+    function showoptions()
+    {
         let i=0;
         if(menu_items != null)
         {
@@ -33,26 +38,35 @@ $("document").ready(function(){
     
 document.querySelector("#restaurant").addEventListener("change",showdetails);
 
-function showdetails(e){
+function showdetails(e)
+    {
     let index = e.target.value;
     
-    if(menu_items != null){
+    if(menu_items != null)
+    {
         let x = menu_items[index];
         let pricesmall = x.price_small;
         
-        if(pricesmall == null){
+        if(pricesmall == null)
+        {
             pricesmall = "Not Available";
         }
+        
         let descrp = x.description;
-        if(descrp == ""){
+        if(descrp == "")
+        
+        {
             descrp = "Description is not available";
         }
+        
         let small = x.small_portion_name;
-        if(small == null){
+        if(small == null)
+        {
             small = "Not Available";
         }
         let large = x.large_portion_name;
-        if(large == null){
+        if(large == null)
+        {
             large = "Not Available";
         }
         document.querySelector("#name").textContent = x.name;
